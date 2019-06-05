@@ -30,13 +30,6 @@ export default class App extends React.Component {
     }
 
     startTimer = () => {
-        const {timerOn} = this.state;
-
-        if (timerOn) {
-            this.setState({timerOn: false});
-            clearInterval(this.timer);
-        }
-
         this.setState({
             timerOn: true,
             timerTime: this.state.timerTime,
