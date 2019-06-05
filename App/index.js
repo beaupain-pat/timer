@@ -1,5 +1,5 @@
 import React from "react";
-import {StyleSheet, View, StatusBar, TouchableOpacity, Text, Dimensions, Picker} from "react-native";
+import {StyleSheet, View, StatusBar, TouchableOpacity, Text, Dimensions, Picker, Platform} from "react-native";
 
 const screen = Dimensions.get("window");
 
@@ -96,6 +96,7 @@ export default class App extends React.Component {
                         onValueChange={itemValue => {
                             this.setState({decimals: itemValue});
                         }}
+                        mode="dropdown"
                     >
                         {ADJUSTABLE_DECIMALS.map(value => (<Picker.Item key={value} label={value} value={value}/>))}
                     </Picker>
@@ -156,6 +157,13 @@ const styles = StyleSheet.create({
     },
     picker: {
         width: 50,
+        ...Platform.select({
+            android: {
+                color: '#fff',
+                backgroundColor: '#07121B',
+                marginLeft: 10
+            }
+        })
     },
     pickerItem: {
         color: "#fff",
